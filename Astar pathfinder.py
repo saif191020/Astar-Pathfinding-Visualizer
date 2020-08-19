@@ -1,4 +1,3 @@
-from pygame import *
 import pygame
 import math
 from queue import PriorityQueue
@@ -7,7 +6,8 @@ from tkinter.messagebox import *
 
 
 VISUALIZE  =True
-WIDTH =700
+WIDTH =700       # Change to reduse or increse the size of Window
+ROWS =25         # Change This to Change The Number of block(s) in grid Recomended size -25 50 100
 win = pygame.display.set_mode((WIDTH,WIDTH))
 pygame.display.set_caption("A* PathFinding Algorithm")
 
@@ -186,8 +186,7 @@ def getClickedPos(pos, rows, width):
     col =  y//gap
     return rows,col
 
-def main(win, width):
-    ROWS =50
+def main(win, width,ROWS):
     grid = setGrid(ROWS, width)
 
 
@@ -247,10 +246,11 @@ def main(win, width):
 root = tk.Tk()
 root.withdraw()
 
-msg =tk.messagebox.askquestion ('Selection','Do You Want To Visualize The Algorithm',icon = 'question') 
-tk.messagebox.showinfo("Key List","LEFT CLICK - To place START/END point and Draw walls\nRIGHT CLICK - Remove START/END and wall \nSPACE - Start The algorithm\nC - To Clear Screen ")
+msg =tk.messagebox.askquestion ('Selection','Do You Want To Visualize The Algorithm ?\n\nYes- See How the Algorith Works with Visualization\nNo- Faster with out Visualization',icon = 'question') 
+if (True):  # change this to False if u dont want instructions
+        tk.messagebox.showinfo("Key List","PRESS\nLEFT CLICK    - To place START/END point and Draw walls\nRIGHT CLICK - Remove START/END and walls \nSPACE\t      - Start The algorithm\nC\t      - To Clear Screen ")
 if msg  =="yes":
     VISUALIZE =True
 else:
     VISUALIZE =False
-main(win, WIDTH)
+main(win, WIDTH, ROWS)
